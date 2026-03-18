@@ -37,9 +37,6 @@ jobs:
         with:
           python-version: "3.13"
 
-      - name: Install Python dependencies
-        run: pip install -r requirements.txt
-
       # --- Sync database ---
       - name: Sync database
         run: ./sync_database.sh
@@ -49,7 +46,7 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add _data/papers.json static/js/index.js
+          git add _data/papers.json static/js/index.js index.html
           git commit -m "Auto-update paper list" || echo "No changes"
           git push origin main
 
@@ -61,7 +58,6 @@ jobs:
 
           # Copy root files
           cp index.html publish/
-          cp favicon.ico publish/ 2>/dev/null || true
 
           # Copy static assets
           cp -r static publish/static

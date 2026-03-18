@@ -26,22 +26,22 @@ const indexHtmlPath = "index.html";
 
 let html = readFileSync(templateHtmlPath, "utf-8");
 
-// 1️⃣ Format BEFORE inserting placeholders (Prettier cannot parse {{...}})
+// Format BEFORE inserting placeholders (Prettier cannot parse {{...}})
 html = await prettier.format(html, {
     parser: "html",
     tabWidth: 4,
     useTabs: false,
 });
 
-// 2️⃣ Insert SRI hashes AFTER formatting (integrity attributes + CSP meta tag)
+// Insert SRI hashes AFTER formatting (integrity attributes + CSP meta tag)
 html = html.replaceAll(cssIntegrityPlaceholder, cssIntegrity);
 html = html.replaceAll(jsIntegrityPlaceholder, jsIntegrity);
 html = html.replaceAll(ttIntegrityPlaceholder, ttIntegrity);
 
-// 3️⃣ Collapse <script> tags
+// Collapse <script> tags
 html = html.replaceAll(/<script\b[\s\S]*?<\/script>/g, s => s.replaceAll(/\s*\n\s*/g, " "));
 
-// 4️⃣ Collapse <link> tags
+// Collapse <link> tags
 html = html.replaceAll(/<link\b[\s\S]*?>/g, s => s.replaceAll(/\s*\n\s*/g, " "));
 
 writeFileSync(indexHtmlPath, html, "utf-8");
