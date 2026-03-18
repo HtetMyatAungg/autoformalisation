@@ -221,6 +221,7 @@ export class AutoFormalisationFiltersDiv implements AutoFormalisationDiv {
         // Search
         this.div.appendChild(this.searchLabel);
         this.div.appendChild(this.searchInput);
+        this.div.appendChild(document.createElement("br"));
 
         // LLM Filter
         AutoFormalisationFiltersDiv.appendOptionsToSelect(this.llmFilterSelect, this.llmFilterOptions);
