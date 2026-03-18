@@ -180,7 +180,7 @@ export class AutoFormalisationFiltersDiv implements AutoFormalisationDiv {
     }
 
     public isHidden(): boolean {
-        return this.div.hidden;
+        return !!this.div.hidden;
     }
 
     private packAndAppendAllFilters(): void {

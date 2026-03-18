@@ -60,7 +60,7 @@ export class AutoFormalisationPapersDiv implements AutoFormalisationDiv {
     }
 
     public isHidden(): boolean {
-        return this.div.hidden;
+        return !!this.div.hidden;
     }
 
     private packAndAppendAllPaperDivs(): void {

@@ -163,7 +163,7 @@ export class AutoFormalisationMainContainerDiv implements AutoFormalisationDiv {
     }
 
     public isHidden(): boolean {
-        return this.div.hidden;
+        return !!this.div.hidden;
     }
 
     private packAndAppendTopMessageDiv(): void {
