@@ -1596,5 +1596,22 @@
         "goal": "TBA",
         "type": "TBA",
         "repository": "TBA"
+    },
+    {
+        "id": "boppana2026reasoning",
+        "entrytype": "article",
+        "authors": "Boppana, Siddharth and Ma, Annabel and Loeffler, Max and Sarfati, Raphael and Bigelow, Eric and Geiger, Atticus and Lewis, Owen and Merullo, Jack",
+        "title": "Reasoning Theater: Disentangling Model Beliefs from Chain-of-Thought",
+        "year": "2026",
+        "doi": "",
+        "url": "",
+        "journal": "arXiv preprint arXiv:2603.05488",
+        "booktitle": "",
+        "venue": "arXiv preprint arXiv:2603.05488",
+        "domain": "",
+        "target formalism": "",
+        "goal": "",
+        "type": "Article",
+        "repository": ""
     }
 ]
