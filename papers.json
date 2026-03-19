@@ -9259,6 +9259,82 @@
                     }
                 }
             }
+        },
+        {
+            "raw": {
+                "id": "boppana2026reasoning",
+                "entrytype": "article",
+                "authors": "Boppana, Siddharth and Ma, Annabel and Loeffler, Max and Sarfati, Raphael and Bigelow, Eric and Geiger, Atticus and Lewis, Owen and Merullo, Jack",
+                "title": "Reasoning Theater: Disentangling Model Beliefs from Chain-of-Thought",
+                "year": "2026",
+                "doi": "",
+                "url": "",
+                "journal": "arXiv preprint arXiv:2603.05488",
+                "booktitle": "",
+                "venue": "arXiv preprint arXiv:2603.05488",
+                "domain": "",
+                "target formalism": "",
+                "goal": "",
+                "type": "Article",
+                "repository": ""
+            },
+            "norm": {
+                "id": "boppana2026reasoning",
+                "entrytype": "article",
+                "authors": [
+                    "bigelow eric",
+                    "boppana siddharth",
+                    "geiger atticus",
+                    "lewis owen",
+                    "loeffler max",
+                    "ma annabel",
+                    "merullo jack",
+                    "sarfati raphael"
+                ],
+                "title": "reasoning theater disentangling model beliefs from chainofthought",
+                "title_tokens": [
+                    "reasoning",
+                    "theater",
+                    "disentangling",
+                    "model",
+                    "beliefs",
+                    "from",
+                    "chainofthought"
+                ],
+                "year": 2026,
+                "doi": null,
+                "url": null,
+                "venue": "arxiv preprint arxiv260305488",
+                "venue_tokens": [
+                    "arxiv",
+                    "preprint",
+                    "arxiv260305488"
+                ],
+                "custom": {
+                    "domain": {
+                        "text": "",
+                        "tokens": []
+                    },
+                    "target formalism": {
+                        "text": "",
+                        "tokens": []
+                    },
+                    "goal": {
+                        "text": "",
+                        "tokens": []
+                    },
+                    "type": {
+                        "text": "article",
+                        "tokens": [
+                            "article"
+                        ]
+                    },
+                    "repository": {
+                        "text": "",
+                        "tokens": []
+                    }
+                }
+            }
         }
     ]
 }
