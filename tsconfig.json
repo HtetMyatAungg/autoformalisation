@@ -8,7 +8,8 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "outDir": "dist-ts",
-    "noEmit": true
+    "noEmit": true,
+    "types": ["node"]
   },
   "include": ["src/typescript/**/*"]
 }

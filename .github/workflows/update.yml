@@ -61,8 +61,8 @@ jobs:
           # Copy root files
           cp index.html publish/
 
-          # Copy static assets
-          cp -r static publish/static
+          # Copy static assets (exclude build-sri.mjs)
+          rsync -av --exclude='js/build-sri.mjs' static/ publish/static/
 
           # Copy data files
           mkdir -p publish/_data

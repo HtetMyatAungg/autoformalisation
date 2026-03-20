@@ -1,4 +1,4 @@
-from __future__ import annotations
+#!/usr/bin/env python3
 
 from json import dump, load
 from re import match, Match

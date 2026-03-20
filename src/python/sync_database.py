@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from json import load, dump
 
 from normaliser import NormalisedEntry

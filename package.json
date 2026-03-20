@@ -1,20 +1,21 @@
 {
-  "name": "awesome-llm-papers",
-  "version": "1.0.0",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "build": "esbuild src/typescript/index.ts --bundle --format=esm --target=esnext --minify --outfile=static/js/index.js && node build-sri.js"
-  },
-  "dependencies": {
-    "chart.js": "^4.5.1",
-    "js-yaml": "^4.1.1"
-  },
-  "devDependencies": {
-    "@types/js-yaml": "^4.0.9",
-    "esbuild": "^0.27.4",
-    "prettier": "^3.8.1",
-    "typescript": "^5.9.3"
-  },
-  "packageManager": "yarn@4.13.0"
+    "name": "awesome-llm-papers",
+    "version": "1.0.0",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "build": "esbuild src/typescript/build-sri.ts --platform=node --format=esm --target=esnext --minify --outfile=static/js/build-sri.mjs && esbuild src/typescript/index.ts --bundle --format=esm --target=esnext --minify --outfile=static/js/index.js && node static/js/build-sri.mjs"
+    },
+    "dependencies": {
+        "chart.js": "^4.5.1",
+        "js-yaml": "^4.1.1"
+    },
+    "devDependencies": {
+        "@types/js-yaml": "^4.0.9",
+        "@types/node": "^25.5.0",
+        "esbuild": "^0.27.4",
+        "prettier": "^3.8.1",
+        "typescript": "^5.9.3"
+    },
+    "packageManager": "yarn@4.13.0"
 }
