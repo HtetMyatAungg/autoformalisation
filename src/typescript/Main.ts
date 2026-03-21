@@ -2,6 +2,7 @@ import { AutoFormalisationMainContainerDiv } from "./divs/AutoFormalisationMainC
 import { AutoFormalisationPaperLoader } from "./papers/AutoFormalisationPaperLoader";
 import { Paper } from "./papers/Paper";
 import { EmptyFilters } from "./papers/EmptyFilters";
+import { AutoFormalisationWelcomeDiv } from "./divs/AutoFormalisationWelcomeDiv";
 
 export class Main {
     private constructor() {}
@@ -20,32 +21,11 @@ export class Main {
     }
 
     private static showWelcomeMessage(message: string): void {
-        const welcomeDiv: HTMLDivElement = document.createElement("div");
-
-        welcomeDiv.className = "welcome-div";
-
-        const messageParagraph: HTMLParagraphElement = document.createElement("p");
-
-        messageParagraph.textContent = message;
-
-        welcomeDiv.appendChild(messageParagraph);
-
-        const closeButton: HTMLButtonElement = document.createElement("button");
-
-        closeButton.textContent = "Close";
-        closeButton.className = "welcome-close-button";
-
-        closeButton.addEventListener("click", () => {
-            welcomeDiv.remove();
-
-            Main.initializeApp();
-        });
-
-        welcomeDiv.appendChild(closeButton);
+        const welcomeDiv: AutoFormalisationWelcomeDiv = new AutoFormalisationWelcomeDiv(message, Main.initializeApp.bind(this));
 
         Main.removeCommentsFromBody();
 
-        document.body.appendChild(welcomeDiv);
+        document.body.appendChild(welcomeDiv.getDiv());
     }
 
     private static async initializeApp(): Promise<void> {

@@ -38,7 +38,7 @@
     margin: 1%;
 }
 
-.welcome-div {
+#welcome-div {
     position: fixed;
     top: 50%;
     left: 50%;
