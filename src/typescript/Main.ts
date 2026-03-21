@@ -25,6 +25,9 @@ export class Main {
 
         Main.removeCommentsFromBody();
 
+        welcomeDiv.pack();
+        welcomeDiv.show();
+
         document.body.appendChild(welcomeDiv.getDiv());
     }
 
