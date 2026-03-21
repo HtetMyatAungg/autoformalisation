@@ -3,6 +3,18 @@ body {
     color: #e0e0e0;
 }
 
+a {
+    color: #6ab0f5;
+}
+
+a:visited {
+    color: #a98edb;
+}
+
+a:hover {
+    color: #93c8ff;
+}
+
 #main-container-div {
     max-width: 50%;
     margin: auto;
