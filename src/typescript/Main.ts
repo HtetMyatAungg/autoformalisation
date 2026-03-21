@@ -7,6 +7,48 @@ export class Main {
     private constructor() {}
 
     public static async main(): Promise<void> {
+        if (document.cookie.includes("WelcomeMessageAlreadySeen=true")) {
+            Main.initializeApp();
+        }
+        else {
+            const welcomeMessage: string = "Welcome to the Awesome LLM Papers collection! This website is a curated collection of papers on Large Language Models (LLMs). We have gathered a wide range of papers covering various aspects of LLMs, including their architecture, training methods, applications, and ethical considerations. We hope you find this collection useful for your research and exploration of LLMs. Feel free to explore the papers and use the filters to find papers that match your interests. Enjoy your journey through the world of LLMs!";
+
+            document.cookie = "WelcomeMessageAlreadySeen=true; max-age=31536000; SameSite=Strict; secure";
+
+            Main.showWelcomeMessage(welcomeMessage);
+        }
+    }
+
+    private static showWelcomeMessage(message: string): void {
+        const welcomeDiv: HTMLDivElement = document.createElement("div");
+
+        welcomeDiv.className = "welcome-div";
+
+        const messageParagraph: HTMLParagraphElement = document.createElement("p");
+
+        messageParagraph.textContent = message;
+
+        welcomeDiv.appendChild(messageParagraph);
+
+        const closeButton: HTMLButtonElement = document.createElement("button");
+
+        closeButton.textContent = "Close";
+        closeButton.className = "welcome-close-button";
+
+        closeButton.addEventListener("click", () => {
+            welcomeDiv.remove();
+
+            Main.initializeApp();
+        });
+
+        welcomeDiv.appendChild(closeButton);
+
+        Main.removeCommentsFromBody();
+
+        document.body.appendChild(welcomeDiv);
+    }
+
+    private static async initializeApp(): Promise<void> {
         const papersJsonPath: string = "_data/papers.json";
         const [papers, llmCount, languageCount]: [Paper[], number, number] = await AutoFormalisationPaperLoader.loadPapers(papersJsonPath);
         const mainMessage: string = "Awesome LLM papers";
