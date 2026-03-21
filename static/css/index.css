@@ -25,12 +25,37 @@ body {
     margin: 0.5% 1%;
 }
 
-#apply-filters-button {
-    margin-top: 1%;
+#filter-search {
+    background-color: #333;
+    color: #e0e0e0;
+    border: 1px solid #555;
 }
 
+#filters-div select {
+    background-color: #333;
+    color: #e0e0e0;
+    border: 1px solid #555;
+}
+
+#apply-filters-button,
 #clear-filters-button {
     margin-top: 1%;
+    background-color: #444;
+    color: #e0e0e0;
+    border: 1px solid #555;
+    cursor: pointer;
+}
+
+#apply-filters-button:hover,
+#clear-filters-button:hover {
+    background-color: #555;
+}
+
+#statistics-div {
+    margin-bottom: 2%;
+    border: 2px solid #555;
+    padding: 1%;
+    background-color: #2a2a2a;
 }
 
 #charts-div {

@@ -83,11 +83,31 @@ export class AutoFormalisationStatisticsDiv implements AutoFormalisationDiv {
                     {
                         label: "Papers per Year",
                         data: Object.values(byYear),
+                        backgroundColor: "rgba(100, 149, 237, 0.7)",
+                        borderColor: "rgba(100, 149, 237, 1)",
+                        borderWidth: 1,
                     },
                 ],
             },
             options: {
-                responsive: true
+                responsive: true,
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: "#e0e0e0",
+                        },
+                    },
+                },
+                scales: {
+                    x: {
+                        ticks: { color: "#e0e0e0" },
+                        grid: { color: "#555" },
+                    },
+                    y: {
+                        ticks: { color: "#e0e0e0" },
+                        grid: { color: "#555" },
+                    },
+                },
             },
         });
     }
@@ -106,11 +126,29 @@ export class AutoFormalisationStatisticsDiv implements AutoFormalisationDiv {
                     {
                         label: "LLM usage",
                         data: Object.values(byLLM),
+                        backgroundColor: [
+                            "rgba(100, 149, 237, 0.7)",
+                            "rgba(72, 191, 145, 0.7)",
+                            "rgba(237, 162, 100, 0.7)",
+                            "rgba(220, 100, 100, 0.7)",
+                            "rgba(180, 130, 220, 0.7)",
+                            "rgba(100, 210, 220, 0.7)",
+                            "rgba(220, 220, 100, 0.7)",
+                        ],
+                        borderColor: "#1e1e1e",
+                        borderWidth: 1,
                     },
                 ],
             },
             options: {
-                responsive: true
+                responsive: true,
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: "#e0e0e0",
+                        },
+                    },
+                },
             },
         });
     }
