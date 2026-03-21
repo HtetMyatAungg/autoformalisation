@@ -1,3 +1,8 @@
+body {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+}
+
 #main-container-div {
     max-width: 50%;
     margin: auto;
@@ -10,9 +15,10 @@
 
 #filters-div {
     margin-bottom: 2%;
-    border: 2px solid black;
+    border: 2px solid #555;
     padding: 1%;
     text-align: center;
+    background-color: #2a2a2a;
 }
 
 #filters-div > * {
@@ -33,9 +39,10 @@
 }
 
 .paper-div {
-    border: 5px solid black;
+    border: 5px solid #555;
     padding: 1%;
     margin: 1%;
+    background-color: #2a2a2a;
 }
 
 #welcome-div {
@@ -43,7 +50,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.9);
     color: white;
     padding: 20px;
     border-radius: 10px;
