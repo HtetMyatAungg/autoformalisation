@@ -92,7 +92,7 @@ export class AutoFormalisationMainContainerDiv implements AutoFormalisationDiv {
         return ((!appliedFilters.llm || paper.llm === appliedFilters.llm)
             && (!appliedFilters.language || paper.language === appliedFilters.language)
             && (!appliedFilters.type || paper.type === appliedFilters.type)
-            && (!appliedFilters.dataset || paper.dataset === appliedFilters.dataset)
+            && (!appliedFilters.goal || paper.goal === appliedFilters.goal)
             && (!appliedFilters.domain || paper.domain === appliedFilters.domain)
             && (appliedFilters.search
                 ? (paper.title?.toLowerCase().includes(appliedFilters.search.toLowerCase())
@@ -107,7 +107,7 @@ export class AutoFormalisationMainContainerDiv implements AutoFormalisationDiv {
             .filter((p) => !appliedFilters.llm || p.llm === appliedFilters.llm)
             .filter((p) => !appliedFilters.language || p.language === appliedFilters.language)
             .filter((p) => !appliedFilters.type || p.type === appliedFilters.type)
-            .filter((p) => !appliedFilters.dataset || p.dataset === appliedFilters.dataset)
+            .filter((p) => !appliedFilters.goal || p.goal === appliedFilters.goal)
             .filter((p) => !appliedFilters.domain || p.domain === appliedFilters.domain)
             .filter((p) => {
                 if (appliedFilters.search) {
@@ -125,16 +125,16 @@ export class AutoFormalisationMainContainerDiv implements AutoFormalisationDiv {
         const llmsSet: Set<string> = new Set(papers.map(p => p.llm).filter((x): x is string => !!x));
         const langsSet: Set<string> = new Set(papers.map(p => p.language).filter((x): x is string => !!x));
         const typesSet: Set<string> = new Set(papers.map(p => p.type).filter((x): x is string => !!x));
-        const datasetsSet: Set<string> = new Set(papers.map(p => p.dataset).filter((x): x is string => !!x));
+        const goalsSet: Set<string> = new Set(papers.map(p => p.goal).filter((x): x is string => !!x));
         const domainsSet: Set<string> = new Set(papers.map(p => p.domain).filter((x): x is string => !!x));
 
         const llms: string[] = [...llmsSet].sort((a, b) => a.localeCompare(b));
         const languages: string[] = [...langsSet].sort((a, b) => a.localeCompare(b));
         const types: string[] = [...typesSet].sort((a, b) => a.localeCompare(b));
-        const datasets: string[] = [...datasetsSet].sort((a, b) => a.localeCompare(b));
+        const goals: string[] = [...goalsSet].sort((a, b) => a.localeCompare(b));
         const domains: string[] = [...domainsSet].sort((a, b) => a.localeCompare(b));
 
-        return new AutoFormalisationFiltersDiv(llms, languages, types, datasets, domains, this.filtersCallback.bind(this));
+        return new AutoFormalisationFiltersDiv(llms, languages, types, goals, domains, this.filtersCallback.bind(this));
     }
 
     public getDiv(): HTMLDivElement {
