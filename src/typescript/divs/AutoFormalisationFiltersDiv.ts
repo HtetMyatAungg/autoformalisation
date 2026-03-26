@@ -52,12 +52,12 @@ export class AutoFormalisationFiltersDiv implements AutoFormalisationDiv {
         AutoFormalisationValidator.ensureAllExist(languages, "Language values cannot be null or undefined.");
         AutoFormalisationValidator.ensureExists(types, "Types cannot be null or undefined.");
         AutoFormalisationValidator.ensureAllExist(types, "Type values cannot be null or undefined.");
-        AutoFormalisationValidator.ensureExists(goals, "Datasets cannot be null or undefined.");
-        AutoFormalisationValidator.ensureAllExist(goals, "Dataset values cannot be null or undefined.");
+        AutoFormalisationValidator.ensureExists(goals, "Goal cannot be null or undefined.");
+        AutoFormalisationValidator.ensureAllExist(goals, "Goal values cannot be null or undefined.");
         AutoFormalisationValidator.ensureExists(domains, "Domains cannot be null or undefined.");
         AutoFormalisationValidator.ensureAllExist(domains, "Domain values cannot be null or undefined.");
-        AutoFormalisationValidator.ensureExists(repositories, "Domains cannot be null or undefined.");
-        AutoFormalisationValidator.ensureAllExist(repositories, "Domain values cannot be null or undefined.");
+        AutoFormalisationValidator.ensureExists(repositories, "Repositories cannot be null or undefined.");
+        AutoFormalisationValidator.ensureAllExist(repositories, "Repositories values cannot be null or undefined.");
         AutoFormalisationValidator.ensureExists(callback, "Callback cannot be null or undefined.");
 
         this.llms = llms;
@@ -136,9 +136,9 @@ export class AutoFormalisationFiltersDiv implements AutoFormalisationDiv {
                 llm: this.llmFilterSelect.value,
                 language: this.languageFilterSelect.value,
                 type: this.typeFilterSelect.value,
-                dataset: this.goalFilterSelect.value,
+                goal: this.goalFilterSelect.value,
                 domain: this.domainFilterSelect.value,
-                repository: this.llmFilterSelect.value
+                repository: this.repositoryFilterSelect.value
             });
         });
 
