@@ -269,6 +269,9 @@ export class AutoFormalisationFiltersDiv implements AutoFormalisationDiv {
         this.div.appendChild(this.goalFilterLabel);
         this.div.appendChild(this.goalFilterSelect);
 
+        // Newline before Domain and Repository filters
+        this.div.appendChild(document.createElement("br"));
+
         // Domain Filter
         AutoFormalisationFiltersDiv.appendOptionsToSelect(this.domainFilterSelect, this.domainFilterOptions);
         this.div.appendChild(this.domainFilterLabel);
