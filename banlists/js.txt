@@ -1,0 +1,95 @@
+# CLIENT-SIDE SECURITY DENYLIST
+# Ban outright, or allow only behind a tiny, security-reviewed wrapper.
+# If only one form is dangerous, that form is named explicitly.
+
+[DOM-BASED XSS: HTML / PARSER-INSERTED / MARKUP SINKS]
+01. Document.execCommand("insertHTML", ...)
+02. Document.parseHTMLUnsafe(...)
+03. document.write(...)
+04. document.writeln(...)
+05. DOMParser.parseFromString(untrusted, "text/html")
+06. element.innerHTML = ...
+07. shadowRoot.innerHTML = ...
+08. element.outerHTML = ...
+09. element.insertAdjacentHTML(position, ...)
+10. Range.createContextualFragment(...)
+11. iframe.srcdoc = ...
+12. element.setHTMLUnsafe(...)
+13. shadowRoot.setHTMLUnsafe(...)
+
+[DOM-BASED XSS: INLINE SCRIPT / IMPLICIT-EVAL / CODE-STRING SINKS]
+14. eval(...)
+15. Function(...)
+16. AsyncFunction(...)
+17. GeneratorFunction(...)
+18. AsyncGeneratorFunction(...)
+19. script.text = ...
+20. script.textContent = ...
+21. script.innerText = ...
+22. window.setTimeout("code", ...)
+23. window.setInterval("code", ...)
+24. WorkerGlobalScope.setTimeout("code", ...)
+25. WorkerGlobalScope.setInterval("code", ...)
+
+[REMOTE SCRIPT EXECUTION / SCRIPT-URL SINKS]
+26. script.src = ...
+27. navigator.serviceWorker.register(...)
+28. importScripts(...)
+29. svgScript.href.baseVal = ...              # <script> inside SVG
+30. svgAnimatedString.baseVal = ...          # when it is SVGScriptElement.href.baseVal
+
+[ATTRIBUTE-BASED EXECUTION SINKS]
+# Treat all inline event-handler attributes as banned (onclick, onload, onerror, etc.)
+31. element.setAttribute("onclick", ...)
+32. element.setAttribute("onload", ...)
+33. element.setAttribute("onerror", ...)
+34. element.setAttribute("srcdoc", ...)      # on <iframe>
+35. element.setAttribute("src", ...)         # on <script>
+36. element.setAttribute("href", ...)        # on SVG <script>
+37. element.setAttributeNS(..., "onclick", ...)
+38. element.setAttributeNS(..., "onload", ...)
+39. element.setAttributeNS(..., "onerror", ...)
+40. element.setAttributeNS(..., "srcdoc", ...)   # on <iframe>
+41. element.setAttributeNS(..., "src", ...)      # on <script>
+42. element.setAttributeNS(..., "href", ...)     # on SVG <script>
+
+[NAVIGATION-TO-CODE / javascript: URL SINKS]
+# Ban any URL-bearing API if the value could ever be "javascript:..."
+43. window.location = "javascript:..."
+44. window.location.href = "javascript:..."
+45. location.assign("javascript:...")
+46. location.replace("javascript:...")
+47. document.location = "javascript:..."
+48. document.location.href = "javascript:..."
+49. window.open("javascript:...")
+50. anchor.href = "javascript:..."
+51. area.href = "javascript:..."
+
+[STYLE / CSS INJECTION / INLINE STYLE SINKS]
+52. element.setAttribute("style", ...)
+53. element.setAttributeNS(..., "style", ...)
+54. svgElement.setAttribute("style", ...)
+55. svgElement.setAttributeNS(..., "style", ...)
+56. element.style.cssText = ...
+57. CSSStyleDeclaration.setProperty(...)
+58. CSSStyleSheet.insertRule(...)
+59. CSSStyleSheet.replace(...)
+60. CSSStyleSheet.replaceSync(...)
+61. style.textContent = ...
+62. style.innerText = ...
+63. style.innerHTML = ...
+
+[ORIGIN / BROWSER SECURITY MODEL FOOTGUNS]
+64. document.domain = ...
+
+[WARNING ONLY / REVIEW REQUIRED, NOT AN AUTOMATIC BAN]
+# Extremely useful when controlled correctly, but dangerous if script URLs or blobs are attacker-influenced.
+65. new Worker(...)
+66. new SharedWorker(...)
+
+[OPTIONAL EXTRA BAN RULES FOR LINTERS / REVIEW]
+67. Any creation of a <script> element whose text comes from an untrusted string
+68. Any creation of a <script> element whose src comes from an untrusted string
+69. Any insertion of executable nodes built from untrusted data into the live DOM
+70. Any assignment of untrusted data to a URL-bearing attribute/property without scheme allowlisting
+71. Any assignment of untrusted data to inline event handlers, inline styles, or parser-inserted markup

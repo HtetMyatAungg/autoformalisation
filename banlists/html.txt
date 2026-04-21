@@ -1,0 +1,138 @@
+# HTML DENYLIST / STRICT POLICY
+# POLICY: the only permitted way to include JS/CSS is:
+#   <script src="..." integrity="..." crossorigin="anonymous"></script>
+#   <link rel="stylesheet" href="..." integrity="..." crossorigin="anonymous">
+# Everything else below is banned.
+
+[JS / CSS INCLUSION: ONLY ALLOWED FORMS]
+01. Any JavaScript inclusion other than:
+    <script src="..." integrity="..." crossorigin="anonymous"></script>
+02. Any stylesheet inclusion other than:
+    <link rel="stylesheet" href="..." integrity="..." crossorigin="anonymous">
+
+[INLINE JAVASCRIPT: BAN OUTRIGHT]
+03. <script>...</script>
+04. <script type="module">...</script>
+05. <script nonce="...">...</script>
+06. <script> with CSP hash approval
+07. onclick="..."
+08. ondblclick="..."
+09. onmousedown="..."
+10. onmouseup="..."
+11. onmouseover="..."
+12. onmousemove="..."
+13. onmouseout="..."
+14. onmouseenter="..."
+15. onmouseleave="..."
+16. onkeydown="..."
+17. onkeypress="..."
+18. onkeyup="..."
+19. oninput="..."
+20. onchange="..."
+21. onsubmit="..."
+22. onreset="..."
+23. onfocus="..."
+24. onblur="..."
+25. onload="..."
+26. onerror="..."
+27. onabort="..."
+28. onresize="..."
+29. onscroll="..."
+30. oncontextmenu="..."
+31. ondrag="..."
+32. ondragstart="..."
+33. ondragend="..."
+34. ondragenter="..."
+35. ondragleave="..."
+36. ondragover="..."
+37. ondrop="..."
+38. oncopy="..."
+39. oncut="..."
+40. onpaste="..."
+41. any other on*="..." handler attribute
+42. href="javascript:..."
+43. src="javascript:..."
+44. action="javascript:..."
+45. formaction="javascript:..."
+46. xlink:href="javascript:..."   # SVG
+
+[INLINE CSS: BAN OUTRIGHT]
+47. <style>...</style>
+48. <style nonce="...">...</style>
+49. <style> with CSP hash approval
+50. style="..."
+51. any inline CSS custom property assignment via style="--x: ..."
+52. any SVG presentation via style="..."
+
+[EXTERNAL SCRIPT / STYLE TAGS THAT ARE BANNED]
+53. <script src="..."></script> without integrity
+54. <script src="..."></script> without crossorigin="anonymous"
+55. <script src="..."></script> without both integrity and crossorigin="anonymous"
+56. <script type="module" src="..."></script> without integrity
+57. <script type="module" src="..."></script> without crossorigin="anonymous"
+58. <script type="module" src="..."></script> without both integrity and crossorigin="anonymous"
+59. <link rel="stylesheet" href="..."> without integrity
+60. <link rel="stylesheet" href="..."> without crossorigin="anonymous"
+61. <link rel="stylesheet" href="..."> without both integrity and crossorigin="anonymous"
+62. protocol-relative script URLs: <script src="//...">
+63. protocol-relative stylesheet URLs: <link rel="stylesheet" href="//...">
+64. unversioned CDN script URLs
+65. unversioned CDN stylesheet URLs
+66. third-party script URLs not explicitly allowlisted
+67. third-party stylesheet URLs not explicitly allowlisted
+
+[OTHER HTML SECURITY / CSP FOOTGUNS]
+68. <iframe srcdoc="...">
+69. <object>
+70. <embed>
+71. <applet>
+72. <meta http-equiv="refresh" ...>
+73. <base href="..."> unless explicitly reviewed
+74. <link rel="import" ...>   # obsolete / banned
+75. SVG <script>
+76. MathML or SVG elements carrying event-handler attributes
+77. any parser-inserted executable content path
+
+[OBSOLETE / PRESENTATIONAL HTML: BAN FOR MAINTAINABILITY]
+78. <font>
+79. <center>
+80. <big>
+81. <tt>
+82. <strike>
+83. <nobr>
+84. <xmp>
+85. <plaintext>
+86. <marquee>
+87. <blink>
+88. <frame>
+89. <frameset>
+90. <noframes>
+91. <noembed>
+92. <acronym>
+93. <dir>
+94. <b> when used only for visual bolding
+95. <i> when used only for visual italics
+96. <u> when used only for visual underlining
+
+[DEPRECATED PRESENTATIONAL ATTRIBUTES]
+97. align=
+98. valign=
+99. bgcolor=
+100. background=
+101. border=           # presentational use
+102. cellpadding=
+103. cellspacing=
+104. frame=
+105. rules=
+106. hspace=
+107. vspace=
+108. nowrap=
+109. alink=
+110. link=
+111. vlink=
+112. clear=
+113. color=            # presentational use
+114. size=             # presentational use
+115. face=
+116. width= / height=  # when used for layout instead of CSS
+117. language=         # on <script>
